@@ -13,8 +13,9 @@ ReactDOM.render(
         *,
         ::after,
         ::before {
+          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
           box-sizing: border-box;
-          font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial,
+          font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, 'Arial',
             sans-serif !important;
         }
       `}
