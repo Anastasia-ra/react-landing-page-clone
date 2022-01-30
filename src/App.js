@@ -1,7 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import './App.css';
-// import Avocode from './images/Avocode.JPG';
 import { ReactComponent as Avocode } from './images/Avocode.svg';
 import { ReactComponent as LockIcon } from './images/lock.svg';
 import Avocado from './images/Avocado.png';
@@ -21,6 +19,12 @@ import { ReactComponent as Instagram } from './images/instagram.svg';
 import { ReactComponent as Youtube } from './images/youtube.svg';
 import { ReactComponent as Svgexport } from './images/svgexport-83.svg';
 import { ReactComponent as Linkedin } from './images/linkedin.svg';
+import { ReactComponent as AvoFooter } from './images/avo_footer.svg';
+import Ebay from './images/ebay.JPG';
+import Tesla from './images/tesla.JPG';
+import Panasonic from './images/Panasonic.JPG';
+import Avast from './images/avast.JPG';
+import Ogilvy from './images/Ogilvy.JPG';
 
 const notificationBarStyle = css`
   background-color: rgb(17, 93, 246);
@@ -29,16 +33,21 @@ const notificationBarStyle = css`
   justify-content: center;
   height: 50px;
   letter-spacing: -0.09px;
-  font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   transition: all 0.2s ease-in 0s;
   cursor: pointer;
   margin: 0px;
   line-height: 1.3;
   font-size: 14px;
-  font-weight: 600;
+
   letter-spacing: -0.14px;
-  font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: rgb(255, 255, 255);
+`;
+
+const notificationTextStyle = css`
+  font-weight: 500;
+  span {
+    font-weight: 600;
+  }
 `;
 
 const buttonNotBarStyle = css`
@@ -61,18 +70,17 @@ const buttonNotBarStyle = css`
 `;
 
 const navigationStyle = css`
-  width: 1100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // width: 100%;
+  width: 100%;
+  max-width: 75rem;
   height: 4.5rem;
   position: absolute;
   left: 0;
   right: 0;
   padding-left: 0.625rem;
   padding-right: 0.625rem;
-  /* width: 100%; */
   margin-left: auto;
   margin-right: auto;
   color: rgb(46, 46, 46);
@@ -103,9 +111,39 @@ const arrow = css`
     content: '▼';
     color: rgb(119, 119, 119);
     padding-left: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.65rem;
   }
+  /* ::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: -2px;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid transparent;
+  } */
+  /* :hover {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: -2px;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid black;
+  } */
 `;
+
+// const hoverLine = css`
+//   :hover {
+//     content: '';
+//     position: absolute;
+//     left: 0px;
+//     bottom: -2px;
+//     display: block;
+//     width: 100%;
+//     border-bottom: 2px solid black;
+//   }
+// `;
 
 const navListStyle = css`
   padding: 1.8rem 1.5rem;
@@ -154,7 +192,6 @@ const signUpButton = css`
   transition: background-color 0.3s ease-in 0s;
   color: rgb(255, 255, 255);
   font-weight: 600;
-  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
   text-align: center;
   vertical-align: middle;
   border-radius: 0.25rem;
@@ -190,14 +227,12 @@ const centralText = css`
   width: 764px;
   height: 442px;
   margin: 0 auto;
-  font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   letter-spacing: -0.06rem;
   font-weight: 700;
   line-height: 1;
   color: rgb(40, 40, 40);
   h1 {
     margin: 0px 0px 2rem;
-    font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     letter-spacing: -0.06rem;
     font-weight: 700;
     line-height: 1;
@@ -205,6 +240,7 @@ const centralText = css`
     font-size: 6rem;
     // margin: 0.67em;
   }
+  margin-top: 47px;
 `;
 
 const listStyles = css`
@@ -245,7 +281,6 @@ const listItemStyles = css`
 const listItemText = css`
   font-size: 1.25rem;
   margin: 0px 0px 1rem;
-  font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.2;
@@ -268,6 +303,9 @@ height: 48px;
     background-color: transparent;
     cursor: auto;
     color: rgb(46, 46, 46);
+    ::placeholder {
+    color: rgb(178, 178, 178);
+  }
   }
   button {
     display: inline-flex;
@@ -282,7 +320,6 @@ height: 48px;
     cursor: pointer;
     border: 1px solid transparent;
     border-radius: 0.25rem;
-    font-family: proxima-nova, "Helvetica Neue", Arial, Helvetica, sans-serif;
     transition: background-color 100ms linear 0s;
     padding: 14px 18px;
     background-color: rgb(0, 188, 135);
@@ -301,7 +338,7 @@ height: 48px;
 const mainAvocadoPicture = css`
   z-index: 5;
   position: absolute;
-  top: 60px;
+  top: 20px;
   right: -200px;
   width: 344px;
   height: 452px;
@@ -310,17 +347,20 @@ const mainAvocadoPicture = css`
 
 const avocadoHand = css`
   position: absolute;
-  z-index: 0;
-  top: 175px;
+  z-index: 2;
+  top: 115px;
   right: 100px;
   width: 130px;
   height: 65px;
+  .st0 {
+    fill: none;
+  }
 `;
 
 const avocadoPencil = css`
   position: absolute;
   z-index: 10;
-  top: 102px;
+  top: 43px;
   right: 180px;
   width: 132px;
   height: 101px;
@@ -328,7 +368,7 @@ const avocadoPencil = css`
 
 const avocadoUnderline = css`
   position: absolute;
-  top: 130px;
+  top: 70px;
   left: 10px;
   z-index: 10;
   width: 440px;
@@ -338,7 +378,7 @@ const avocadoUnderline = css`
 const aiImageStyle = css`
   position: absolute;
   z-index: 5;
-  top: 80px;
+  top: 55px;
   right: -280px;
   width: 80px;
   height: 69px;
@@ -346,7 +386,7 @@ const aiImageStyle = css`
 const psImageStyle = css`
   position: absolute;
   z-index: 5;
-  top: -40px;
+  top: -80px;
   right: -60px;
   width: 68px;
   height: 64px;
@@ -354,7 +394,7 @@ const psImageStyle = css`
 const figmaImageStyle = css`
   position: absolute;
   z-index: 5;
-  top: 195px;
+  top: 135px;
   left: -240px;
   width: 50px;
   height: 74px;
@@ -362,7 +402,7 @@ const figmaImageStyle = css`
 const sketchImageStyle = css`
   position: absolute;
   z-index: 5;
-  top: -50px;
+  top: -95px;
   left: -150px;
   width: 80px;
   height: 69px;
@@ -370,13 +410,20 @@ const sketchImageStyle = css`
 const xdImageStyle = css`
   position: absolute;
   z-index: 5;
-  top: 440px;
+  top: 390px;
   left: -90px;
   width: 50px;
   height: 51px;
 `;
 
-const companyList = css``;
+const companyList = css`
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  bottom: -125px;
+`;
+
+const companyLogos = css``;
 
 const clientsImageStyle = css`
   position: absolute;
@@ -389,7 +436,7 @@ const clientsImageStyle = css`
 
 const footerPartsStyle = css`
   position: absolute;
-  top: 750px;
+  top: 950px;
   display: flex;
   flex-direction: column;
   /* width: 1262.7px;
@@ -407,7 +454,6 @@ const linksPartsStyle = css`
   padding-top: 4.5rem;
   h2 {
     margin: 0px 0px 2rem;
-    font-family: proxima-nova, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 1.2;
@@ -511,14 +557,26 @@ const bulletPoints = css`
   }
 `;
 
+const avoFooterStyle = css`
+  position: absolute;
+  bottom: -1px;
+  right: -60px;
+  cursor: pointer;
+  overflow: hidden;
+`;
+
+// const videoSection = css``;
+
+// const videoSectionSmall = css``;
+
 function App() {
   return (
     <div className="App">
       <header>
         <div css={notificationBarStyle}>
-          <div>
-            👋 We're joining forces with Ceros - we play so well together, we
-            made it official.
+          <div css={notificationTextStyle}>
+            <span>👋 We're joining forces with Ceros </span> - we play so well
+            together, we made it official.
           </div>
           <button css={buttonNotBarStyle}>Learn more</button>
         </div>
@@ -569,7 +627,7 @@ function App() {
               <div css={listItemStyles}>
                 <span css={svgCheckMarkStyle}>
                   <svg viewBox="0 0 24 24">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                   </svg>
                 </span>
                 <span css={listItemText}>Hand-off</span>
@@ -577,7 +635,7 @@ function App() {
               <div css={listItemStyles}>
                 <span css={svgCheckMarkStyle}>
                   <svg viewBox="0 0 24 24">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                   </svg>
                 </span>
                 <span css={listItemText}>Inspect</span>
@@ -585,7 +643,7 @@ function App() {
               <div css={listItemStyles}>
                 <span css={svgCheckMarkStyle}>
                   <svg viewBox="0 0 24 24">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                   </svg>
                 </span>
                 <span css={listItemText}>Get assets</span>
@@ -593,7 +651,7 @@ function App() {
               <div css={listItemStyles}>
                 <span css={svgCheckMarkStyle}>
                   <svg viewBox="0 0 24 24">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                   </svg>
                 </span>
                 <span css={listItemText}>Review</span>
@@ -603,18 +661,34 @@ function App() {
               <input type="email" placeholder="name@company.com" />
               <button>Start free trial</button>
             </div>
+            <div css={companyList}>
+              <div>
+                <img src={Ebay} alt="Ebay Logo" css={companyLogos} />
+              </div>
+              <div>
+                <img src={Tesla} alt="Tesla Logo" />
+              </div>
+              <div>
+                <img src={Panasonic} alt="Panasonic Logo" />
+              </div>
+              <div>
+                <img src={Avast} alt="Avast Logo" />
+              </div>
+              <div>
+                <img src={Ogilvy} alt="Ogilvy Logo" />
+              </div>
+            </div>
           </div>
         </div>
-        <div css={companyList}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        {/* <div css={videoSection}>
+          <div css={videoSectionSmall}> </div>
+        </div> */}
       </main>
       <footer css={footerStyle}>
         <div css={footerPartsStyle}>
+          <div>
+            <AvoFooter css={avoFooterStyle} />
+          </div>
           <div css={linksPartsStyle}>
             <div css={footerLinksStyle}>
               <img src={Favicon} alt="Logo" css={avocadoFavIcon} />
